@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from controllers.login_controller import router as login_router
 from middleware.auth_middleware import AuthMiddleware
+from controllers.user_controller import router as user_router
 
 app = FastAPI()
 
@@ -15,6 +16,7 @@ app.add_middleware(
 
 app.add_middleware(AuthMiddleware)
 app.include_router(login_router)
+app.include_router(user_router)
 
 @app.get("/")
 def read_root():
