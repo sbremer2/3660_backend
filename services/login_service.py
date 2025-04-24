@@ -5,7 +5,7 @@ from repositories.user_repository import UserRepository
 
 SECRET_KEY = "your_secret_key"
 ALGORITHM = "HS256"
-EXP_HOURS  = 1
+EXP_MINUTES = 5
 
 class LoginService:
     @staticmethod
@@ -25,7 +25,7 @@ class LoginService:
         payload = {
             "sub": user.username,
             "iat": now,
-            "exp": now + timedelta(hours=EXP_HOURS),
+            "exp": now + timedelta(minutes=EXP_MINUTES),
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
         return token

@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 from services.login_service import LoginService
 
-PUBLIC_PATHS = ("/api/login",)
+PUBLIC_PATHS = ("/api/login","/cloudinary/images", "/pexels/images")
 
 class AuthMiddleware(BaseHTTPMiddleware):
     #def __init__(self, app: FastAPI):
