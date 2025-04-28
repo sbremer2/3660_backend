@@ -5,12 +5,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-router = APIRouter(prefix="/pexels", tags=["Pexels"])
+router = APIRouter()
 
 PEXELS_API_KEY = os.getenv("PEXELS_API_KEY")
 PEXELS_BASE_URL = "https://api.pexels.com/v1/search"
 
-@router.get("/images")
+@router.get("/pexels/images")
 def get_pexels_images(query: str = Query(...), per_page: int = 10):
     headers = {
         "Authorization": PEXELS_API_KEY
