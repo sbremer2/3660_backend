@@ -3,12 +3,9 @@ from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 from services.login_service import LoginService
 
-PUBLIC_PATHS = ("/api/login","/cloudinary/images", "/pexels/images")
+PUBLIC_PATHS = ("/api/login","/cloudinary/images", "/pexels/images", "/openapi.json", "/docs", "/redoc")
 
 class AuthMiddleware(BaseHTTPMiddleware):
-    #def __init__(self, app: FastAPI):
-    #    self.app = app
-
     async def dispatch(self, request: Request, call_next):
         if any(request.url.path.startswith(p) for p in PUBLIC_PATHS):
             return await call_next(request)
